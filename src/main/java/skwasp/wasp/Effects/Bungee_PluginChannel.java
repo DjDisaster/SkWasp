@@ -30,12 +30,11 @@ public class Bungee_PluginChannel extends Effect {
 
     @Override
     public String toString(@Nullable Event event, boolean debug) {
-        return "";//""Send bungee message to " + players.toString(event, debug) + " with text " + text.toString(event, debug);
+        return "Sent a message on the channel + " + string.toString(event, debug) + " with text " + text.toString(event, debug);
     }
 
     @Override
     protected void execute(Event event) {
-        // loop through all players
         String message = text.getSingle(event);
         String channel = string.getSingle(event);
         if (Strings.isNullOrEmpty(message)) {

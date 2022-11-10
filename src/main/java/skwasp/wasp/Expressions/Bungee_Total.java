@@ -51,12 +51,6 @@ public class Bungee_Total extends SimpleExpression<Integer> {
     protected Integer[] get(Event e) {
         // check if server.getSingle = null
         Bukkit.broadcastMessage("testEEE");
-        if (server == null) {
-            BungeeTotal.requestCount("ALL");
-            return new Integer[]{BungeeHook.getPlayercount("ALL")};
-        } else {
-            BungeeTotal.requestCount(server.getSingle(e));
-        }
         return new Integer[]{BungeeHook.getPlayercount(server.getSingle(e))};
     }
 }

@@ -42,7 +42,6 @@ public class Bungee_GetServers extends SimpleExpression<String>  {
 
     @Override
     protected String[] get(Event e) {
-        BungeeTotal.requestServers();
         return BungeeHook.getServerlist();
     }
 }

@@ -48,13 +48,7 @@ public class Bungee_ListPlayers extends SimpleExpression<OfflinePlayer> {
 
     @Override
     protected OfflinePlayer[] get(Event e) {
-        // check if server.getSingle = null
         Bukkit.broadcastMessage("test");
-        if (server == null) {
-            BungeeTotal.requestPlayers("ALL");
-        } else {
-            BungeeTotal.requestPlayers(server.getSingle(e));
-        }
-        return BungeeHook.getPlayerlist();
+        return BungeeHook.getPlayerlist(server.getSingle(e));
     }
 }

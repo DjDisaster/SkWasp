@@ -66,9 +66,7 @@ public class BungeeTotal {
                         UUID uuid = UUID.nameUUIDFromBytes(("OfflinePlayer:" + players[i]).getBytes(StandardCharsets.UTF_8));
                         playerlist[i] = Bukkit.getOfflinePlayer(uuid);
                     }
-                    BungeeHook.setPlayerlist(playerlist);
-                    Bukkit.getLogger().info("Server: " + server + " has " + Arrays.toString(players) + " players online");
-                    System.out.println("Server: " + server + " has " + Arrays.toString(players) + " players online");
+                    BungeeHook.setPlayerlist(playerlist, server);
                 }
                 // message contains GetServers
                 if (msg.contains("GetServers")) {

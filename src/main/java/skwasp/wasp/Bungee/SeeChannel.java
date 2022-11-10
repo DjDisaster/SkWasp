@@ -26,9 +26,9 @@ public class SeeChannel extends Event implements Listener {
     }
     public String GetStuff() {
         HashMap<String, String> map = new HashMap<>();
-        //map.put("playerName", playerName);
-        //map.put("getChannel", getChannel);
-        //map.put("message", message);
+        map.put("playerName", playerName);
+        map.put("getChannel", getChannel);
+        map.put("message", message);
         return "test";
     }
 }
