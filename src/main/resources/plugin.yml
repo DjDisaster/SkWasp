@@ -1,0 +1,7 @@
+name: SkWasp
+version: '1.0 (Wasp vs Bee, who would win?)'
+main: skwasp.wasp.Wasp
+api-version: 1.19
+authors: [ DjDisaster ]
+description: A basic skript addon, used for better data storage and other things!
+depend: [Skript]
