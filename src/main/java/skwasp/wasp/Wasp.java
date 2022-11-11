@@ -25,7 +25,8 @@ public class Wasp extends JavaPlugin {
     SkriptAddon addon;
     public static void UpdateThings() {
         BungeeTotal.requestServers();
-        // loop servers and request count and players for the server
+        BungeeTotal.requestCount("ALL");
+        BungeeTotal.requestPlayers("ALL");
         for (String server : BungeeHook.getServerlist()) {
             BungeeTotal.requestCount(server);
             BungeeTotal.requestPlayers(server);
@@ -52,7 +53,7 @@ public class Wasp extends JavaPlugin {
             public void run() {
                 UpdateThings();
             }
-        }, 0L, 20L);
+        }, 0L, 5L);
     }
 
     public static Wasp getInstance() {

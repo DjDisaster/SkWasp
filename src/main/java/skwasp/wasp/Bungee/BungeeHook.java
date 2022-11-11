@@ -31,5 +31,11 @@ public class BungeeHook {
     }
     public static void setServerlist(String[] serverlist) {
         BungeeHook.serverlist = serverlist;
+        // add all to BungeeHook.serverlist
+        int i = 0;
+        for (String server : serverlist) {
+            BungeeHook.serverlist[i] = server;
+            i++;
+        }
     }
 }

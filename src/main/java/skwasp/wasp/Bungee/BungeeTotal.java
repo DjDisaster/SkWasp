@@ -41,10 +41,11 @@ public class BungeeTotal {
 
                 String msg = new String(message, StandardCharsets.UTF_8);
                 Bukkit.getPluginManager().callEvent(new SeeChannel(player.getName(), channel, message.toString()));
+                // log
+                System.out.println("BungeeCord: " + msg);
                 msg = msg.replaceAll("[^A-Za-z0-9]", "");
                 // message contains PlayerCount
                 if (msg.contains("PlayerCount")) {
-                 System.out.println("PlayerCount: " + msg);
                   ByteArrayDataInput in = ByteStreams.newDataInput(message);
                     in.readUTF();
                     String server = in.readUTF();
@@ -53,13 +54,11 @@ public class BungeeTotal {
                 }
                 // message contains PlayerList run setPlayerlist using OfflinePlayer[] type
                 if (msg.contains("PlayerList")) {
-                    System.out.println("PlayerList: " + msg);
                     ByteArrayDataInput in = ByteStreams.newDataInput(message);
                     in.readUTF();
                     String server = in.readUTF();
                     String[] players = in.readUTF().split(", ");
                     OfflinePlayer[] playerlist = new OfflinePlayer[players.length];
-                    System.out.println("player" + Arrays.toString(players));
                     for (int i = 0; i < players.length; i++) {
 
                         // player name to UUID
