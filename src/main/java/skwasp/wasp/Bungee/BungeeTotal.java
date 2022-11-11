@@ -36,15 +36,28 @@ public class BungeeTotal {
     public static void registerChannel() {
         Wasp.server().getMessenger().registerOutgoingPluginChannel(Wasp.getInstance(), "BungeeCord");
         Wasp.server().getMessenger().registerIncomingPluginChannel(Wasp.getInstance(), "BungeeCord", new PluginMessageListener() {
+                    @Override
+                    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+                        if (!channel.equals("BungeeCord")) {
+                            System.out.println("Channel is not BungeeCord" + channel);
+                            return;
+                        }
+                        //System.out.println("Message received on channel" + channel + " from " + player.getName() + " with message " + Arrays.toString(message));
+                        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+                        String subchannel = in.readUTF();
+                        // subchannel = "Test"
+                        if (subchannel.equals("Test")) {
+                            System.out.println("Message received on Test" + in.readUTF() + " from " + player.getName() + " with message " + Arrays.toString(message));
+                        }
+                    }
+                });
+        Wasp.server().getMessenger().registerIncomingPluginChannel(Wasp.getInstance(), "BungeeCord", new PluginMessageListener() {
             @Override
             public void onPluginMessageReceived(String channel, Player player, byte[] message) {
 
                 String msg = new String(message, StandardCharsets.UTF_8);
                 Bukkit.getPluginManager().callEvent(new SeeChannel(player.getName(), channel, message.toString()));
-                // log
-                System.out.println("BungeeCord: " + msg);
                 msg = msg.replaceAll("[^A-Za-z0-9]", "");
-                // message contains PlayerCount
                 if (msg.contains("PlayerCount")) {
                   ByteArrayDataInput in = ByteStreams.newDataInput(message);
                     in.readUTF();
@@ -69,17 +82,16 @@ public class BungeeTotal {
                 }
                 // message contains GetServers
                 if (msg.contains("GetServers")) {
-                    System.out.println("GetServers: " + msg);
                     ByteArrayDataInput in = ByteStreams.newDataInput(message);
                     in.readUTF();
                     String[] servers = in.readUTF().split(", ");
                     BungeeHook.setServerlist(servers);
-                    Bukkit.getLogger().info("Servers: " + Arrays.toString(servers));
-                    System.out.println("Servers: " + Arrays.toString(servers));
                 }
-                System.out.println("Channel: " + "n/a");
-                System.out.println("Player: " + player.getName());
-                System.out.println("Message: " + msg);
+                // if msg does not contain any of the above, it is a custom message
+                if (!msg.contains("PlayerCount") && !msg.contains("PlayerList") && !msg.contains("GetServers")) {
+                 System.out.println("Unknown message: " + msg + " from " + player.getName() + " on " + channel + " with " + msg);
+                }
+
             }
         });
     }

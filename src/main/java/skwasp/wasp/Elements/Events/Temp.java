@@ -1,4 +1,4 @@
-package skwasp.wasp.Events;
+package skwasp.wasp.Elements.Events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package skwasp.wasp.Expressions;
+package skwasp.wasp.Elements.Expressions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -6,16 +6,11 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 import skwasp.wasp.Bungee.BungeeHook;
-import skwasp.wasp.Bungee.BungeeTotal;
-
-import java.util.ArrayList;
 
 public class Bungee_ListPlayers extends SimpleExpression<OfflinePlayer> {
     static {

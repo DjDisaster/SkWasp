@@ -1,4 +1,4 @@
-package skwasp.wasp.Effects;
+package skwasp.wasp.Elements.Effects;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
@@ -6,15 +6,14 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import com.google.common.base.Strings;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import skwasp.wasp.Bungee.BungeeOut;
-import skwasp.wasp.Wasp;
 
 public class Bungee_PluginChannel extends Effect {
     static {
-        Skript.registerEffect(Bungee_SendMessage.class, "Pluginmessage %string% on [bungee] channel %string%");
+        Skript.registerEffect(Bungee_PluginChannel.class, "Pluginmessage %string% on [bungee] channel %string%");
     }
 
     private Expression<String> text;
@@ -38,8 +37,10 @@ public class Bungee_PluginChannel extends Effect {
         String message = text.getSingle(event);
         String channel = string.getSingle(event);
         if (Strings.isNullOrEmpty(message)) {
+            Bukkit.broadcastMessage("Message is empty" + message + " " + channel);
             return;
         }
+        Bukkit.broadcastMessage("Sending message on channel " + channel + " with text " + message);
         BungeeOut.sendChannel(channel, message);
     }
 }

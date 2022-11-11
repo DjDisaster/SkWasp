@@ -1,8 +1,7 @@
-package skwasp.wasp.Expressions;
+package skwasp.wasp.Elements.Expressions;
 
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.util.SimpleExpression;
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 
@@ -12,10 +11,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import skwasp.wasp.Bungee.BungeeHook;
-import skwasp.wasp.Bungee.BungeeTotal;
-import skwasp.wasp.Wasp;
-
-import java.util.Objects;
 
 public class Bungee_Total extends SimpleExpression<Integer> {
 
