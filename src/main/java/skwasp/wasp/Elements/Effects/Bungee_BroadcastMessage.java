@@ -14,7 +14,7 @@ import skwasp.wasp.Bungee.BungeeTotal;
 
 public class Bungee_BroadcastMessage extends Effect {
     static {
-        Skript.registerEffect(Bungee_SendMessage.class, "bungeebroadcast message %string%");
+        Skript.registerEffect(Bungee_SendMessage.class, "bungee broadcast %string%");
     }
 
     private Expression<String> text;
@@ -34,11 +34,8 @@ public class Bungee_BroadcastMessage extends Effect {
     @Override
     protected void execute(Event event) {
         String message = text.getSingle(event);
-        BungeeTotal.requestServers();
-
         for (OfflinePlayer player: BungeeHook.getPlayerlist("All")){
             BungeeOut.sendMessage(player.getName(), message);
-
         }
 
     }
