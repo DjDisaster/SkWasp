@@ -19,13 +19,6 @@ public class Bungee_BroadcastMessage extends Effect {
 
     private Expression<String> text;
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
-        this.text = (Expression<String>) expressions[0];
-        return true;
-    }
-
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return "";//""Send bungee message to " + players.toString(event, debug) + " with text " + text.toString(event, debug);
@@ -38,5 +31,12 @@ public class Bungee_BroadcastMessage extends Effect {
             BungeeOut.sendMessage(player.getName(), message);
         }
 
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
+        this.text = (Expression<String>) expressions[0];
+        return true;
     }
 }
